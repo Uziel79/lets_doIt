@@ -16,7 +16,7 @@ nunjucks.configure(app.get('views'), {
 // DEFININDO O CAMINHO DA PASTA COM ARQUIVOS PUBLIC(CSS, JS, IMGS...)
 app.use(express.static(path.resolve('app', 'public')));
 
-app.get('/', (res, res) => {
+app.get('/', (req, res) => {
   res.render('helloWorld');
 });
 
