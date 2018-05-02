@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const nunjucks = require('nunjucks');
+const routes = require('./app/routes');
 
 const app = express();
 
@@ -16,8 +17,6 @@ nunjucks.configure(app.get('views'), {
 // DEFININDO O CAMINHO DA PASTA COM ARQUIVOS PUBLIC(CSS, JS, IMGS...)
 app.use(express.static(path.resolve('app', 'public')));
 
-app.get('/', (req, res) => {
-  res.render('helloWorld');
-});
+app.use('/', routes);
 
 app.listen(3000, () => console.log('Server is running!'));
