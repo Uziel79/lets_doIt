@@ -1,7 +1,7 @@
 module.exports = {
-  username: 'userletstodo',
-  password: null,
-  database: 'letstodo',
+  username: 'root',
+  password: '123',
+  database: 'letsdoit',
   host: '127.0.0.1',
   dialect: 'mysql',
 };
