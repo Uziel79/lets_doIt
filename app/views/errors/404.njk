@@ -1,0 +1,31 @@
+{% extends 'layout/default.njk' %}
+
+{% block body %}
+  <div class="app blank sidebar-opened">
+    <article class="content">
+      <div class="error-card global">
+        <div class="error-title-block">
+          <h1 class="error-title">404</h1>
+          <h2 class="error-sub-title"> Ops, página não encontrada </h2>
+        </div>
+        <div class="error-container">
+          <p>Deseja procurar por alguma página?</p>
+          <div class="row">
+            <div class="col-12">
+              <div class="input-group">
+                <input type="text" class="form-control">
+                <span class="input-group-btn">
+                  <button class="btn btn-primary" type="button">Buscar</button>
+                </span>
+              </div>
+            </div>
+          </div>
+          <br>
+          <a class="btn btn-primary" href="/">
+            <i class="fa fa-angle-left"></i> Voltar para Home
+          </a>
+        </div>
+      </div>
+    </article>
+  </div>
+{% endblock %}
