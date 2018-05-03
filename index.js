@@ -2,6 +2,10 @@ const express = require('express');
 const path = require('path');
 const nunjucks = require('nunjucks');
 const routes = require('./app/routes');
+const bodyparser = require('body-parser');
+const session = require('express-session');
+const sessionConfig = require('./config/session');
+const flash = require('connect-flash');
 
 const app = express();
 
@@ -16,6 +20,10 @@ nunjucks.configure(app.get('views'), {
 });
 // DEFININDO O CAMINHO DA PASTA COM ARQUIVOS PUBLIC(CSS, JS, IMGS...)
 app.use(express.static(path.resolve('app', 'public')));
+
+app.use(bodyparser.urlencoded({ extended: false }));
+app.use(session(sessionConfig));
+app.use(flash());
 
 app.use('/', routes);
 
