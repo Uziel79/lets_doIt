@@ -1,0 +1,20 @@
+{% extends 'layout/default.njk' %}
+
+{% block body %}
+  <div class="app blank sidebar-opened">
+    <article class="content">
+      <div class="error-card global">
+        <div class="error-title-block">
+          <h1 class="error-title">500</h1>
+          <h2 class="error-sub-title"> Erro Interno do Servidor </h2>
+        </div>
+        <div class="error-container">
+          <p>Porque você não tenta recarregar a página? ou entre em contato com o suporte</p>
+          <a class="btn btn-primary" href="/">
+            <i class="fa fa-angle-left"></i> Voltar para a Home
+          </a>
+        </div>
+      </div>
+    </article>
+  </div>
+{% endblock %}

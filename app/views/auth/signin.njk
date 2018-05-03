@@ -1,0 +1,46 @@
+{% extends 'layout/default.njk' %}
+
+{% block body %}
+  <div class="auth">
+    <div class="auth-container">
+      <div class="card">
+        <header class="auth-header">
+          <h1 class="auth-title">
+            <div class="logo">
+              <span class="l l1"></span>
+              <span class="l l2"></span>
+              <span class="l l3"></span>
+              <span class="l l4"></span>
+              <span class="l l5"></span>
+            </div> Let's Do It </h1>
+        </header>
+        <div class="auth-content">
+          <p class="text-center">Faça Login para continuar</p>
+          <form id="login-form" action="#" method="POST" novalidate="">
+            <div class="form-group">
+              <label for="username">Email</label>
+              <input type="email" class="form-control underlined" name="email" id="email" placeholder="Digite seu email" required> </div>
+            <div class="form-group">
+              <label for="password">Senha</label>
+              <input type="password" class="form-control underlined" name="password" id="password" placeholder="Digite sua senha" required> </div>
+            <div class="form-group">
+              <label for="remember">
+                <input class="checkbox" id="remember" type="checkbox">
+                <span>Manter conectado</span>
+              </label>
+              <a href="/recover" class="forgot-btn pull-right">Esqueceu sua senha?</a>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-block btn-primary">Entrar</button>
+            </div>
+            <div class="form-group">
+              <p class="text-muted text-center">Ainda não tem uma conta?
+                <a href="/signup">Cadastre-se!</a>
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
