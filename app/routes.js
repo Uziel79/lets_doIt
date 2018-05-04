@@ -3,6 +3,8 @@ const requireDir = require('require-dir');
 
 const routes = express.Router();
 
+const guestMiddleware = require('./middlewares/guest');
+
 const controllers = requireDir('./controllers');
 
 // FLASH MESSAGES
@@ -13,9 +15,9 @@ routes.use((req, res, next) => {
 });
 
 /* ROUTES AUTH */
-routes.get('/', controllers.authController.signin);
-routes.get('/signup', controllers.authController.signup);
-routes.get('/recover', controllers.authController.passwordRecover);
+routes.get('/', guestMiddleware, controllers.authController.signin);
+routes.get('/signup', guestMiddleware, controllers.authController.signup);
+routes.get('/recover', guestMiddleware, controllers.authController.passwordRecover);
 
 routes.post('/register', controllers.authController.register);
 routes.post('/authenticate', controllers.authController.authenticate);
