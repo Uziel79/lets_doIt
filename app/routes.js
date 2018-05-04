@@ -5,9 +5,12 @@ const routes = express.Router();
 
 const authMiddleware = require('./middlewares/auth');
 const guestMiddleware = require('./middlewares/guest');
+const utilsMiddleware = require('./middlewares/utils');
 
 const controllers = requireDir('./controllers');
 
+// Middlewares de utilidades.
+routes.use(utilsMiddleware);
 // FLASH MESSAGES
 routes.use((req, res, next) => {
   res.locals.flashSuccess = req.flash('success');
