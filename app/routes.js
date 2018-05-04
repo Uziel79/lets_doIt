@@ -24,8 +24,21 @@ routes.get('/recover', guestMiddleware, controllers.authController.passwordRecov
 routes.post('/register', controllers.authController.register);
 routes.post('/authenticate', controllers.authController.authenticate);
 
+routes.use('/app', authMiddleware);
+// A PARTIR DAQUI TODAS AS VIEWS PODEM USAR O user.name DA SESSÃO
+routes.use((req, res, next) => {
+  try {
+    res.locals.userName = req.session.user.name;
+  } finally {
+    next();
+  }
+});
+
 // ROUTES DASHBOARD
-routes.get('/app/dashboard', authMiddleware, controllers.dashboardController.index);
+routes.get('/app/dashboard', controllers.dashboardController.index);
+
+/* ROUTES ERRORS */
+routes.use((req, res) => res.render('errors/404'));
 
 /* EXPORTANDO AS ROUTES */
 module.exports = routes;

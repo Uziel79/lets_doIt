@@ -1,1 +1,12 @@
-<h1>DashBoard</h1>
+{% extends 'layout/default.njk' %}
+
+{% block body %}
+  <header>
+    <h1>Let's Do It</h1>
+    <p>Bem vindo<br><strong>{{ userName }}</strong></p>
+    <a href="/signout">
+      Logout
+    </a>
+  </header>
+
+{% endblock %}
