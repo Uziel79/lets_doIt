@@ -3,6 +3,7 @@ const requireDir = require('require-dir');
 
 const routes = express.Router();
 
+const authMiddleware = require('./middlewares/auth');
 const guestMiddleware = require('./middlewares/guest');
 
 const controllers = requireDir('./controllers');
@@ -23,7 +24,7 @@ routes.post('/register', controllers.authController.register);
 routes.post('/authenticate', controllers.authController.authenticate);
 
 // ROUTES DASHBOARD
-routes.get('/app/dashboard', controllers.dashboardController.index);
+routes.get('/app/dashboard', authMiddleware, controllers.dashboardController.index);
 
 /* EXPORTANDO AS ROUTES */
 module.exports = routes;
