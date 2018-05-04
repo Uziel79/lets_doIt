@@ -21,12 +21,12 @@ module.exports = {
 
       if (await User.findOne({ where: { email } })) {
         req.flash('error', 'E-mail já cadastrado');
-        return res.redirect('back');
+        return res.saveAndRedirect('back');
       }
 
       if (password !== retypePassword) {
         req.flash('error', 'Passwords não conferem');
-        return res.redirect('back');
+        return res.saveAndRedirect('back');
       }
 
       password = await bcrypt.hash(req.body.password, 5);
@@ -34,7 +34,7 @@ module.exports = {
       await User.create({ ...req.body, password });
 
       req.flash('success', 'Usuário cadastrado com sucesso');
-      return res.redirect('/');
+      return res.saveAndRedirect('/');
     } catch (err) {
       return next(err);
     }
@@ -48,18 +48,18 @@ module.exports = {
 
       if (!user) {
         req.flash('error', 'Usuário inexistente');
-        return res.redirect('back');
+        return res.saveAndRedirect('back');
       }
 
       if (!await bcrypt.compare(password, user.password)) {
         req.flash('error', 'Senha incorreta');
-        return res.redirect('back');
+        return res.saveAndRedirect('back');
       }
 
       req.session.user = user;
 
       return req.session.save(() => {
-        res.redirect('app/dashboard');
+        res.saveAndRedirect('app/dashboard');
       });
     } catch (err) {
       return next(err);
